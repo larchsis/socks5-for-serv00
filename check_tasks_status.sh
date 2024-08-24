@@ -29,7 +29,6 @@ else
 fi
 
 output=$(pgrep -laf .s5/s5)
-echo "$output"
 if echo "$output" | grep -q ".s5/s5"; then
     echo "socks5 online"
 else
