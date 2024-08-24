@@ -28,8 +28,8 @@ else
     fi
 fi
 
-output=$(pgrep -laf s5)
-if echo "$output" | grep -q "s5"; then
+output=$(pgrep -laf .s5)
+if echo "$output" | grep -q ".s5"; then
     echo "socks5 online"
 else
     echo "socks5 offline"
