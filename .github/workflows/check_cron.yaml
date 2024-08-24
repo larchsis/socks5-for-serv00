@@ -3,8 +3,8 @@ name: Execute SSH Commands
 on:
   workflow_dispatch: # 手动触发工作流
   schedule:
-    #- cron: "30 0,13 * * *"  # 每天 北京时间 早8点30分 晚9点30分 各运行一次
-    - cron: "30 20 1 * *"  # 每月第1天 北京时间 早4点30分 运行一次
+    - cron: "30 0,13 * * *"  # 每天 北京时间 早8点30分 晚9点30分 各运行一次
+    # - cron: "30 20 1 * *"  # 每月第1天 北京时间 早4点30分 运行一次
 
 jobs:
   execute-commands:
@@ -31,8 +31,8 @@ jobs:
             ssh=$(echo "$account" | jq -r '.ssh')
 
             echo "echo \"Executing for $username@$ssh\"" >> sshpass.sh
-            # echo "sshpass -p '$password' ssh -o StrictHostKeyChecking=no '$username@$ssh' 'bash <(curl -s https://raw.githubusercontent.com/larchsis/socks5-for-serv00/main/check_tasks_status.sh)'" >> sshpass.sh
-            echo "sshpass -p '$password' ssh -o StrictHostKeyChecking=no '$username@$ssh'" >> sshpass.sh
+            echo "sshpass -p '$password' ssh -o StrictHostKeyChecking=no '$username@$ssh' 'bash <(curl -s https://raw.githubusercontent.com/larchsis/socks5-for-serv00/main/check_tasks_status.sh)'" >> sshpass.sh
+            # echo "sshpass -p '$password' ssh -o StrictHostKeyChecking=no '$username@$ssh'" >> sshpass.sh
           done < <(jq -c '.[]' accounts.json)
           chmod +x sshpass.sh
 
