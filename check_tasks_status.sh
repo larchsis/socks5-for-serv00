@@ -1,6 +1,7 @@
 #!/bin/bash
 
 output=$(pgrep -laf cloudflared)
+echo "$output"
 if echo "$output" | grep -q "cloudflared"; then
     echo "cloudflared online"
 else
@@ -15,6 +16,7 @@ else
 fi
 
 output=$(pgrep -laf freechatgpt)
+echo "$output"
 if echo "$output" | grep -q "freechatgpt"; then
     echo "freechatgpt online"
 else
@@ -29,6 +31,7 @@ else
 fi
 
 output=$(pgrep -laf .s5/s5)
+echo "$output"
 if echo "$output" | grep -q ".s5/s5"; then
     echo "socks5 online"
 else
@@ -41,6 +44,7 @@ else
 fi
 
 # output=$(pgrep -laf web)
+# echo "$output"
 # if echo "$output" | grep -q "web"; then
 #     echo "Sing-box online"
 # else
